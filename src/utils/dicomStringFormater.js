@@ -62,12 +62,11 @@ function heightToDCM(input) {
   // Converte a entrada para número
   let height = Number(input);
 
-  // Identifica se a entrada está em centímetros (assumindo que alturas maiores que 3 metros são inválidas)
-  if (height > 300) {
-    height /= 100;
+  // Se o usuário passar a altura já em metros, retorna diretamente -> considerando altura < 3m.
+  if (height > 0 && height <= 3.0) {
+    return height;
   }
-
-  return height;
+  return height / 100;
 }
 
 module.exports = { dateToDCMDate, nameToDCMName, heightToDCM, timeToDCMTime };

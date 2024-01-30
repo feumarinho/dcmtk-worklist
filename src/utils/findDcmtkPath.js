@@ -50,4 +50,4 @@ function findDcmtkPath() {
   return null; // Retorna null se o DCMTK não for encontrado
 }
 
-module.exports = { findDcmtkPath };
+module.exports = findDcmtkPath;

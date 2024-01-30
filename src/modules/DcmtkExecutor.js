@@ -14,7 +14,7 @@ class DcmtkExecutor {
     return new Promise((resolve, reject) => {
       const fullPath = `${this.dcmtkPath}${this.dcmtkTool}`;
       const commandLine = fullPath + ' ' + args.join(' ');
-      console.log('x: ', commandLine);
+      //console.log('x: ', commandLine);
       exec(commandLine, (error, stdout, stderr) => {
         if (error) {
           console.error(`Erro de execução: ${error}`);
@@ -22,7 +22,7 @@ class DcmtkExecutor {
           return;
         }
         if (stderr) {
-          console.error(`stderr: ${stderr}`);
+          console.info(`stderr: ${stderr}`);
         }
         resolve(stdout); // Resolve a Promise com o stdout se não houver erro
       });

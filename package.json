@@ -1,14 +1,15 @@
 {
-  "name": "dcmtk-worklist",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./src/main.js",
+  "name": "ecd-worklist",
+  "version": "0.0.1",
+  "description": "A library for creating and managing worklists using DCMTK.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/main.js"
   },
-  "author": "",
+  "author": "Filipe Marinho",
   "license": "ISC",
+  "keywords": ["DICOM", "Worklist", "Node.js"],
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
