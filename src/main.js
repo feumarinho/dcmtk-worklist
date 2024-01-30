@@ -1,21 +1,24 @@
-const DcmtkExecutor = require('./modules/DcmtkExecutor');
-const { findDcmtkPath } = require('./modules/findDcmtkPath');
+const path = require('path');
 
-// Obtém o caminho do DCMTK
-const dcmtkPath = findDcmtkPath();
+const config = require('./config/config');
+const { dump2DCM } = require('./modules/dumpToDCM');
 
-// Cria uma instância de DcmtkExecutor com o caminho obtido
-const dcmtkExecutor = new DcmtkExecutor(dcmtkPath);
+const params = {
+  AccessionNumber: '1010C1R891P1',
 
-// Define o comando DCMTK a ser executado e os argumentos
-const command = 'dcmdump'; // Substitua 'dcmdump' pelo comando DCMTK que você deseja executar
-const args = ['--version']; // Substitua '--version' pelos argumentos reais para o seu comando
+  PatientName: 'TESTE DE DAEMON DOI',
+  PatientID: 'L1946',
+  PatientBirthDate: '19861210',
+  PatientSex: 'F',
+  PatientSize: '1.9',
+  PatientWeight: '90',
+  RequestedProcedureDescription: 'ECOCARDIOGRAMA TRANSTORACICO',
+  Modality: 'US',
+  ScheduledProcedureStepStartDate: '20230821',
+  ScheduledProcedureStepStartTime: '000000',
+  ScheduledPerformingPhysicianName: 'DR. FILIPE JOSE COSTA MARINHO RIBEIRO',
+  ScheduledProcedureStepDescription: 'ECOCARDIOGRAMA TRANSTORACICO',
+  RequestedProcedureID: '01',
+};
 
-// Executa o comando usando DcmtkExecutor
-dcmtkExecutor.execute(command, args, (err, result) => {
-  if (err) {
-    console.error('Erro ao executar o comando DCMTK:', err);
-  } else {
-    console.log('Resultado do comando DCMTK:', result);
-  }
-});
+dump2DCM(params, path.join(config.outFilePath, `${params.AccessionNumber}.wl`));

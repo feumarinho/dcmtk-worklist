@@ -43,7 +43,7 @@ function findDcmtkPath() {
       const result = execSync('which dcmdump').toString().trim();
       if (result) return result.replace(/\/dcmdump$/, ''); // Remove '/dcmdump' do caminho
     } catch (error) {
-      // Comando falhou, DCMTK provavelmente não está instalado
+      console.log('DCMTK não encontrado');
     }
   }
 
